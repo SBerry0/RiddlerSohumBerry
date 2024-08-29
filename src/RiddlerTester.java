@@ -1,5 +1,6 @@
 import java.io.*;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
 
 public class RiddlerTester {
 
@@ -9,25 +10,25 @@ public class RiddlerTester {
     @Test
     public void testOne() {
         setTestData("1");
-        solver.decryptOne(encrypted);
+        String answer = solver.decryptOne(encrypted);
+        System.out.println(answer);
     }
-
     @Test
     public void testTwo() {
         setTestData("2");
-        solver.decryptOne(encrypted);
+        solver.decryptTwo(encrypted);
     }
 
     @Test
     public void testThree() {
         setTestData("3");
-        solver.decryptOne(encrypted);
+        solver.decryptThree(encrypted);
     }
 
     @Test
     public void testFour() {
         setTestData("4");
-        solver.decryptOne(encrypted);
+        solver.decryptFour(encrypted);
     }
 
     private void setTestData(String text) {
@@ -37,6 +38,7 @@ public class RiddlerTester {
             String line;
             while((line = encryptedReader.readLine()) != null) {
                 encrypted += line;
+                encrypted += "\n";
             }
         } catch (IOException e) {
             System.out.println("Error opening test file " + text + "_encrypted.txt");
